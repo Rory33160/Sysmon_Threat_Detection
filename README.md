@@ -3,6 +3,9 @@ This is  the Try Hack Me sysmon room walk through , using sysmon and Powershell 
 
 Sysmon Endpoint Threat detection
 
+Tools used:
+Sysmon, Powershell and Event Viewer
+
 Investigation 1 - ugh, BILL THAT'S THE WRONG USB!
 
 In this investigation, your team has received reports that a malicious file was dropped onto a host by a malicious USB. They have pulled the logs suspected and have tasked you with running the investigation for it.
@@ -12,7 +15,7 @@ What is the full registry key of the USB device calling svchost.exe in Investiga
 
 ![image](https://github.com/Rory33160/Sysmon_Threat_Detection/assets/47018034/58d14f19-2a26-44a9-a8a8-21b1cb4896db)
 
-The answer is :
+The answer is found in in event viewer, event 13 :
 HKLM\System\CurrentControlSet\Enum\WpdBusEnumRoot\UMB\2&37c186b&0&STORAGE#VOLUME#_??_USBSTOR#DISK&VEN_SANDISK&PROD_U3_CRUZER_MICRO&REV_8.01#4054910EF19005B3&0#\FriendlyName
 TargetObject: U
 Details: %8
@@ -28,7 +31,7 @@ Filtering for “rawaccessread” and event ID 9
 
 
 What is the first exe the process executes in Investigation 1?
- Looking through event viewer from the raliest date.
+ Looking through event viewer from the earliest date.
 
 rundll32.exe
 
